@@ -2,7 +2,6 @@ package com.frank.drawingcompose.ui.theme
 
 import android.view.MotionEvent
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,8 +16,9 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import kotlin.math.sqrt
 
-private val currentColor = Color.White
-private var BackgroundColor = Color.Black
+var currentColor = Color.White
+//var currentColor by mutableStateOf(Color.White)
+var BackgroundColor = Color.Black
 var index by mutableStateOf(0L)
 const val PI = 3.14159
 private var StartX = 0f
@@ -32,7 +32,6 @@ var isLastEdgeMoved = false
 fun DrawCanvas() {
     Canvas(
         modifier = Modifier
-            .background(Color.Black)
             .fillMaxSize()
             .pointerInteropFilter {
                 when (it.action) {

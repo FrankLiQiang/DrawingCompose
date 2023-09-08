@@ -315,7 +315,11 @@ private fun MenuDialog() {
                     DrawText(
                         "ColorF",
                         Modifier.weight(1.0f)
-                    ) { isShowDialog = false }
+                    ) {
+                        isShowDialog = false
+                        isFrontColor = true
+                        isColorDialog = true
+                    }
                 }
                 Row(
                     Modifier
@@ -401,7 +405,11 @@ private fun MenuDialog() {
                     DrawText(
                         "ColorB",
                         Modifier.weight(1.0f)
-                    ) { isShowDialog = false }
+                    ) {
+                        isShowDialog = false
+                        isFrontColor = false
+                        isColorDialog = true
+                    }
                 }
                 Row(
                     Modifier

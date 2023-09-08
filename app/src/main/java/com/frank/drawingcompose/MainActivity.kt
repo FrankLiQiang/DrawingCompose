@@ -13,9 +13,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.frank.drawingcompose.ui.theme.BackgroundColor
 import com.frank.drawingcompose.ui.theme.DrawCanvas
 import com.frank.drawingcompose.ui.theme.DrawingComposeTheme
 import com.frank.drawingcompose.ui.theme.history
@@ -27,21 +27,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DrawingComposeTheme {
+                if (index < -900) return@DrawingComposeTheme
                 Column(
                     Modifier
                         .fillMaxSize()
-                        .background(Color.Black)) {
+                        .background(BackgroundColor)) {
                     Row(
                         Modifier
                             .height(35.dp)
-                            .background(Color.Black)
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.outline_close_24),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(35.dp)
-                                .background(Color.Black)
                                 .clickable {
                                     isNewMultiShape = true
                                     if (!history.isEmpty()) {
@@ -58,7 +57,6 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier
                                 .size(35.dp)
                                 .padding(end = 10.dp)
-                                .background(Color.Black)
                                 .clickable {
                                     isShowDialog = true
                                 }
@@ -66,6 +64,7 @@ class MainActivity : ComponentActivity() {
                     }
                     ShowMenuDialog()
                     DrawCanvas()
+                    ShowColorPicker()
                 }
             }
         }
