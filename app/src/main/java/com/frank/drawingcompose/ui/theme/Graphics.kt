@@ -162,20 +162,6 @@ fun DrawCanvas() {
                             }
                         }
                     }
-
-                    MotionEvent.ACTION_POINTER_UP -> {
-                        if (currentType == MULTISHAPE) {
-                            if (!history.isEmpty()) {
-                                val s = history.lastElement()
-                                if (s is MultiShape) {
-                                    s.addPoint(it.x, it.y)
-                                    if (!isLastEdgeMoved) {
-                                        index++
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
                 true
             }
