@@ -38,11 +38,12 @@ var isFrontColor by mutableStateOf(true)
 private fun CustomDialogWithResultExample(
     onDismiss: () -> Unit,
     onNegativeClick: () -> Unit,
-    onPositiveClick: (Color) -> Unit
+    onPositiveClick: (Color) -> Unit,
+    myColor: Color
 ) {
-    var red by remember { mutableStateOf(currentColor.red) }
-    var green by remember { mutableStateOf(currentColor.green) }
-    var blue by remember { mutableStateOf(currentColor.blue) }
+    var red by remember { mutableStateOf(myColor.red * 255) }
+    var green by remember { mutableStateOf(myColor.green * 255) }
+    var blue by remember { mutableStateOf(myColor.blue * 255) }
 
     val color = Color(
         red = red.toInt(),
@@ -60,7 +61,7 @@ private fun CustomDialogWithResultExample(
             Column(modifier = Modifier.padding(8.dp)) {
 
                 Text(
-                    text = "Select Color",
+                    text = if (isFrontColor) "Select Prospect Color" else "Select Background Color",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     modifier = Modifier.padding(8.dp)
@@ -75,7 +76,6 @@ private fun CustomDialogWithResultExample(
 
                     Column {
 
-                        //Text(text = "Red ${red.toInt()}")
                         Text(text = "Red ${red.toInt()}")
 
                         Slider(
@@ -153,6 +153,11 @@ fun ShowColorPicker() {
                     BackgroundColor = color
                     index++
                 }
+            },
+            myColor = if (isFrontColor) {
+                currentColor
+            } else {
+                BackgroundColor
             }
         )
     }

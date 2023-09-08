@@ -17,7 +17,6 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import kotlin.math.sqrt
 
 var currentColor = Color.White
-//var currentColor by mutableStateOf(Color.White)
 var BackgroundColor = Color.Black
 var index by mutableStateOf(0L)
 const val PI = 3.14159
